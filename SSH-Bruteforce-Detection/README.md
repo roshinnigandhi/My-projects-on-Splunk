@@ -71,5 +71,7 @@ SOC-style dashboards were created to provide:
 - Source IP activity overview
 
 ## 11. Full Project Report
-📄 SSH_Brute_Force_Detection_Report.pdf
+
+📄 [SSH Brute-Force Detection – Full Project Report](SSH_Brute_Force_Detection_Report.pdf)
+
 
