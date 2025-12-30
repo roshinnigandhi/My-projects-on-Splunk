@@ -72,6 +72,6 @@ SOC-style dashboards were created to provide:
 
 ## 11. Full Project Report
 
-📄 [SSH Brute-Force Detection – Full Project Report](SSH_Brute_Force_Detection_Report.pdf)
+📄 [SSH Brute-Force Detection – Full Project Report](SSH_Brute_Force_Detection.pdf)
 
 
