@@ -1,17 +1,19 @@
-############################################################
-# SSH Brute-Force Detection – Splunk
-# Author: Roshinni Gandhi
-# Description:
-# Collection of SPL queries used for baselining, detection,
-# investigation, and validation of SSH brute-force attacks.
-############################################################
+============================================================
+SSH Brute-Force Detection – Splunk
+Author: Roshinni Gandhi
+
+Description:
+This file contains the SPL queries used across the SOC workflow
+for SSH brute-force detection, investigation, and validation.
+============================================================
 
 
-############################################################
-# 1. Baseline – Authentication Status Overview
-# Purpose:
-# Understand overall SSH authentication behavior
-############################################################
+============================================================
+1. Baseline – Authentication Status Overview
+Purpose:
+Establish baseline visibility into SSH authentication behavior
+============================================================
+
 index=main sourcetype=ssh
 | eval Status=case(
     auth_status="success","Successful Logins",
@@ -23,11 +25,12 @@ index=main sourcetype=ssh
 
 
 
-############################################################
-# 2. Success vs Failed Login Ratio
-# Purpose:
-# Identify abnormal failure-heavy authentication patterns
-############################################################
+============================================================
+2. Success vs Failed Login Ratio
+Purpose:
+Identify abnormal authentication patterns dominated by failures
+============================================================
+
 index=main sourcetype=ssh (auth_status=success OR auth_status=failure)
 | eval Status=case(
     auth_status="success","Successful Logins",
@@ -38,11 +41,12 @@ index=main sourcetype=ssh (auth_status=success OR auth_status=failure)
 
 
 
-############################################################
-# 3. Top Source IPs Generating Login Attempts
-# Purpose:
-# Identify high-volume login sources (potential attackers)
-############################################################
+============================================================
+3. Top Source IPs Generating Login Attempts
+Purpose:
+Identify high-volume login sources for further investigation
+============================================================
+
 index=main sourcetype=ssh
 | rename src_ip AS "Source IP"
 | stats count AS "Login Attempts" by "Source IP"
@@ -51,11 +55,13 @@ index=main sourcetype=ssh
 
 
 
-############################################################
-# 4. Brute-Force Detection (Threshold-Based)
-# Condition:
-# >20 failed attempts from same IP within 5 minutes
-############################################################
+============================================================
+4. Brute-Force Detection – Threshold-Based
+Condition:
+More than 20 failed login attempts from the same IP
+within a 5-minute time window
+============================================================
+
 index=main sourcetype=ssh auth_status=failure
 | bin _time span=5m
 | stats count AS failed_attempts by src_ip, _time
@@ -64,11 +70,12 @@ index=main sourcetype=ssh auth_status=failure
 
 
 
-############################################################
-# 5. Brute-Force Investigation Table
-# Purpose:
-# Analyst-friendly view for triage and escalation
-############################################################
+============================================================
+5. Brute-Force Investigation Table
+Purpose:
+Provide analyst-friendly output for triage and escalation
+============================================================
+
 index=main sourcetype=ssh auth_status=failure
 | bin _time span=5m
 | stats count AS "Failed Attempts" by src_ip, _time
@@ -80,11 +87,12 @@ index=main sourcetype=ssh auth_status=failure
 
 
 
-############################################################
-# 6. Successful Logins by Source IP
-# Purpose:
-# Check if brute-force attempts led to successful access
-############################################################
+============================================================
+6. Successful Logins by Source IP
+Purpose:
+Validate whether brute-force attempts resulted in compromise
+============================================================
+
 index=main sourcetype=ssh auth_status=success
 | rename src_ip AS "Source IP"
 | stats count AS "Successful Logins" by "Source IP"
@@ -93,11 +101,12 @@ index=main sourcetype=ssh auth_status=success
 
 
 
-############################################################
-# 7. Failed Logins by Source IP
-# Purpose:
-# Identify IPs consistently failing authentication
-############################################################
+============================================================
+7. Failed Logins by Source IP
+Purpose:
+Identify IPs consistently failing authentication attempts
+============================================================
+
 index=main sourcetype=ssh auth_status=failure
 | rename src_ip AS "Source IP"
 | stats count AS "Failed Logins" by "Source IP"
