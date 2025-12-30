@@ -1,0 +1,105 @@
+############################################################
+# SSH Brute-Force Detection – Splunk
+# Author: Roshinni Gandhi
+# Description:
+# Collection of SPL queries used for baselining, detection,
+# investigation, and validation of SSH brute-force attacks.
+############################################################
+
+
+############################################################
+# 1. Baseline – Authentication Status Overview
+# Purpose:
+# Understand overall SSH authentication behavior
+############################################################
+index=main sourcetype=ssh
+| eval Status=case(
+    auth_status="success","Successful Logins",
+    auth_status="failure","Failed Logins",
+    1=1,"Undetermined"
+)
+| stats count AS "Total Attempts" by Status
+| sort -"Total Attempts"
+
+
+
+############################################################
+# 2. Success vs Failed Login Ratio
+# Purpose:
+# Identify abnormal failure-heavy authentication patterns
+############################################################
+index=main sourcetype=ssh (auth_status=success OR auth_status=failure)
+| eval Status=case(
+    auth_status="success","Successful Logins",
+    auth_status="failure","Failed Logins"
+)
+| stats count AS "Total Logins" by Status
+| sort -"Total Logins"
+
+
+
+############################################################
+# 3. Top Source IPs Generating Login Attempts
+# Purpose:
+# Identify high-volume login sources (potential attackers)
+############################################################
+index=main sourcetype=ssh
+| rename src_ip AS "Source IP"
+| stats count AS "Login Attempts" by "Source IP"
+| sort -"Login Attempts"
+| head 15
+
+
+
+############################################################
+# 4. Brute-Force Detection (Threshold-Based)
+# Condition:
+# >20 failed attempts from same IP within 5 minutes
+############################################################
+index=main sourcetype=ssh auth_status=failure
+| bin _time span=5m
+| stats count AS failed_attempts by src_ip, _time
+| where failed_attempts > 20
+| sort -failed_attempts
+
+
+
+############################################################
+# 5. Brute-Force Investigation Table
+# Purpose:
+# Analyst-friendly view for triage and escalation
+############################################################
+index=main sourcetype=ssh auth_status=failure
+| bin _time span=5m
+| stats count AS "Failed Attempts" by src_ip, _time
+| where 'Failed Attempts' > 20
+| rename src_ip AS "Source IP"
+| eval Time=strftime(_time, "%Y-%m-%d %H:%M:%S")
+| table "Source IP", Time, "Failed Attempts"
+| sort -"Failed Attempts"
+
+
+
+############################################################
+# 6. Successful Logins by Source IP
+# Purpose:
+# Check if brute-force attempts led to successful access
+############################################################
+index=main sourcetype=ssh auth_status=success
+| rename src_ip AS "Source IP"
+| stats count AS "Successful Logins" by "Source IP"
+| sort -"Successful Logins"
+| head 15
+
+
+
+############################################################
+# 7. Failed Logins by Source IP
+# Purpose:
+# Identify IPs consistently failing authentication
+############################################################
+index=main sourcetype=ssh auth_status=failure
+| rename src_ip AS "Source IP"
+| stats count AS "Failed Logins" by "Source IP"
+| sort -"Failed Logins"
+| head 15
