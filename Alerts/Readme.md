@@ -90,8 +90,6 @@ SOC-Detection-Alerts/
 │
 └── mitigation-playbooks/
 └── soc-response-actions-per-alert/
-'''
-
 ```
 
 ## Alert Validation Methodology
