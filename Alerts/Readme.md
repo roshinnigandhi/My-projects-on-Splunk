@@ -67,4 +67,70 @@ Each alert includes:
 ---
 
 ## 📂 Repository Structure
+SOC-Detection-Alerts/
+│
+├── README.md
+│
+├── lab-architecture/
+│ └── diagrams and log flow visuals
+│
+├── alerts/
+│ ├── authentication/
+│ ├── privilege-escalation/
+│ ├── execution/
+│ └── persistence/
+│
+├── spl/
+│ └── SPL queries used for alerts
+│
+├── screenshots/
+│ └── Alert triggers and log evidence
+│
+└── mitigation-playbooks/
+└── SOC response actions per alert
+
+
+---
+
+## 🧪 Alert Validation Methodology
+Each alert was validated using the following approach:
+1. Simulate attacker or suspicious activity on endpoint
+2. Generate real logs (Linux / Windows)
+3. Verify log ingestion into Splunk
+4. Execute SPL query
+5. Trigger alert based on defined thresholds
+6. Capture alert and log evidence
+
+No synthetic or mock data was used.
+
+---
+
+## SOC Mindset & Best Practices
+- Alerts are tuned to reduce noise and false positives
+- Throttling and trigger conditions are thoughtfully applied
+- Alerts focus on **behavior**, not just single events
+- Detection logic aligns with real SOC workflows
+
+---
+
+## Who This Project Is For
+- SOC Analyst (Tier 1 / Tier 2) roles  
+- Detection Engineering learning paths  
+- Blue Team portfolios  
+- Interview demonstration and walkthroughs  
+
+---
+
+## Future Enhancements
+- Add more persistence and lateral movement detections  
+- Improve alert tuning based on false-positive analysis  
+- Correlate multiple alerts into incident-level detections  
+- Add automated response playbooks  
+
+---
+
+## Author
+**SOC Analyst | Blue Team | Detection Engineering Enthusiast**
+
+This project reflects hands-on learning and continuous improvement in security monitoring and incident detection.
 
