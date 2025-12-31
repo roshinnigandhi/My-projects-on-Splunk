@@ -68,7 +68,7 @@ Each alert includes:
 
 ## Repository Structure
 
-'''
+```
 SOC-Detection-Alerts/
 ├── README.md
 │
@@ -92,7 +92,7 @@ SOC-Detection-Alerts/
 └── soc-response-actions-per-alert/
 '''
 
----
+```
 
 ## Alert Validation Methodology
 Each alert was validated using the following approach:
