@@ -70,26 +70,34 @@ Each alert includes:
 
 ```
 SOC-Detection-Alerts/
-├── README.md
+alerts/
+├── ssh_bruteforce/
+│   ├── README.md
+│   ├── splunk_query.txt
+│   ├── trigger_condition.md
+│   ├── attack_simulation.md
+│   └── screenshots/
 │
-├── lab-architecture/
-│ ├── diagrams/
-│ └── log-flow-visuals/
+├── successful_login_after_failures/
+│   ├── README.md
+│   ├── splunk_query.txt
+│   ├── trigger_condition.md
+│   ├── attack_simulation.md
+│   └── screenshots/
 │
-├── alerts/
-│ ├── authentication/
-│ ├── privilege-escalation/
-│ ├── execution/
-│ └── persistence/
+├── linux_user_added/
+│   ├── README.md
+│   ├── splunk_query.txt
+│   ├── trigger_condition.md
+│   ├── attack_simulation.md
+│   └── screenshots/
 │
-├── spl/
-│ └── spl-queries-used-for-alerts/
-│
-├── screenshots/
-│ └── alert-triggers-and-log-evidence/
-│
-└── mitigation-playbooks/
-└── soc-response-actions-per-alert/
+├── suspicious_powershell_execution/
+│   ├── README.md
+│   ├── splunk_query.txt
+│   ├── trigger_condition.md
+│   ├── attack_simulation.md
+│   └── screenshots/
 ```
 
 ## Alert Validation Methodology
