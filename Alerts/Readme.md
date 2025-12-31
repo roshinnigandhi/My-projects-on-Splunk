@@ -67,6 +67,8 @@ Each alert includes:
 ---
 
 ## Repository Structure
+
+...
 SOC-Detection-Alerts/
 ├── README.md
 │
@@ -88,7 +90,7 @@ SOC-Detection-Alerts/
 │
 └── mitigation-playbooks/
 └── soc-response-actions-per-alert/
-
+...
 
 ---
 
