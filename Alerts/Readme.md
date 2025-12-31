@@ -66,13 +66,13 @@ Each alert includes:
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 SOC-Detection-Alerts/
-│
 ├── README.md
 │
 ├── lab-architecture/
-│ └── diagrams and log flow visuals
+│ ├── diagrams/
+│ └── log-flow-visuals/
 │
 ├── alerts/
 │ ├── authentication/
@@ -81,18 +81,18 @@ SOC-Detection-Alerts/
 │ └── persistence/
 │
 ├── spl/
-│ └── SPL queries used for alerts
+│ └── spl-queries-used-for-alerts/
 │
 ├── screenshots/
-│ └── Alert triggers and log evidence
+│ └── alert-triggers-and-log-evidence/
 │
 └── mitigation-playbooks/
-└── SOC response actions per alert
+└── soc-response-actions-per-alert/
 
 
 ---
 
-## 🧪 Alert Validation Methodology
+## Alert Validation Methodology
 Each alert was validated using the following approach:
 1. Simulate attacker or suspicious activity on endpoint
 2. Generate real logs (Linux / Windows)
