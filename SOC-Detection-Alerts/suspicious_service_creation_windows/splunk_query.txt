@@ -1,7 +1,7 @@
-'''
+```spl
 index=* sourcetype=WinEventLog:System EventCode=7045
 | rex field=Message "Service Name:\s+(?<ServiceName>[^\r\n]+)"
 | rex field=Message "Service File Name:\s+(?<ImagePath>[^\r\n]+)"
 | rex field=Message "Service Account:\s+(?<AccountName>[^\r\n]+)"
 | table _time host ServiceName ImagePath AccountName
-''' 
+```
