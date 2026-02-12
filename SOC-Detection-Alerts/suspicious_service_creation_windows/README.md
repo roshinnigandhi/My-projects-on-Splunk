@@ -31,6 +31,9 @@ Service creation is a low-frequency, high-risk activity. Triggering on any occur
 ## Attack Simulation
 The alert was validated by manually creating a Windows service on the endpoint to simulate malicious persistence behavior.
 
+Service created using:
+sc.exe create EvilService binPath= "cmd.exe /c powershell.exe"
+
 This action generated Event ID 7045 in the Windows System logs, which was successfully ingested and detected by Splunk.
 
 ## Validation
