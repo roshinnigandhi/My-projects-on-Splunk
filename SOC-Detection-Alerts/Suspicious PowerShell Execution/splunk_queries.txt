@@ -1,0 +1,4 @@
+index=* EventCode=4688
+New_Process_Name="C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+(Process_Command_Line="*-EncodedCommand*" OR Process_Command_Line="*-NoProfile*" OR Process_Command_Line="*-WindowStyle Hidden*")
+| table _time host Account_Name Creator_Process_Name New_Process_Name Process_Command_Line
