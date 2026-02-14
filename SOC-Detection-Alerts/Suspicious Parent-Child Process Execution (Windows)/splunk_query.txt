@@ -1,0 +1,17 @@
+index=main sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational EventID=1
+| eval Image=lower(Image), ParentImage=lower(ParentImage)
+| where (
+ParentImage LIKE "%winword.exe%" OR
+ParentImage LIKE "%excel.exe%" OR
+ParentImage LIKE "%outlook.exe%" OR
+ParentImage LIKE "%powerpnt.exe%" OR
+ParentImage LIKE "%wscript.exe%" OR
+ParentImage LIKE "%cscript.exe%" OR
+ParentImage LIKE "%mshta.exe%"
+)
+AND (
+Image LIKE "%powershell.exe%" OR
+Image LIKE "%cmd.exe%" OR
+Image LIKE "%rundll32.exe%"
+)
+| table _time host EventID ParentImage Image CommandLine
