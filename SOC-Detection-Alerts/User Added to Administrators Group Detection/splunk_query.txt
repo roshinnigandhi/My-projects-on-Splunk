@@ -1,0 +1,17 @@
+index=* sourcetype=WinEventLog:Security (EventCode=4720 OR EventCode=4732)
+| sort 0 _time
+| eval EventType=case(
+EventCode==4720, "User Created",
+EventCode==4732, "Group Membership Changed"
+)
+| eval Narrative=case(
+EventCode==4720,
+actor_user." created account ".target_user,
+EventCode==4732 AND like(Group_Name,"%Administrators%"),
+actor_user." added a user to Administrators group",
+EventCode==4732 AND isnotnull(Group_Name),
+actor_user." modified group membership: ".Group_Name,
+true(),
+"Unclassified security event"
+)
+| table _time EventType actor_user target_user Group_Name Narrative
