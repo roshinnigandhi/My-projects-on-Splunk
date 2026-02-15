@@ -1,0 +1,6 @@
+index=* ("usermod" AND "sudo")
+| rex "sudo:\s+(?<actor_user>\w+)\s*:"
+| rex "add\s+'(?<target_user>[^']+)'"
+| stats values(actor_user) as actor_user values(target_user) as target_user by _time host
+| sort 0 _time
+| table _time host actor_user target_user
