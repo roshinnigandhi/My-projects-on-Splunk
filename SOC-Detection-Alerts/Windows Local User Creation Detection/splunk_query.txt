@@ -1,0 +1,2 @@
+index=* EventCode=4720
+| table _time ComputerName actor_user target_user
