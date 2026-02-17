@@ -71,6 +71,7 @@ This action generated Event ID 4720 in the Windows Security logs, which was succ
 - Raw Security logs were reviewed to verify event accuracy.
 
 ### Alert & Detection Output
+
 ![Alert Triggered](Screenshots/02_alert_triggered.png)
 ![Detection Result](Screenshots/03_detection_result.png)
 
