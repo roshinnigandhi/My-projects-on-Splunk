@@ -58,6 +58,7 @@ Command used:
 ```powershell
 net user soc pass123 /add
 ```
+![Attack Simulation](Screenshots/01_attack_simulation.png)
 
 This action generated Event ID 4720 in the Windows Security logs, which was successfully ingested and detected by Splunk.
 
@@ -67,6 +68,11 @@ This action generated Event ID 4720 in the Windows Security logs, which was succ
   - Actor account
   - Newly created user account
 - Raw Security logs were reviewed to verify event accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
