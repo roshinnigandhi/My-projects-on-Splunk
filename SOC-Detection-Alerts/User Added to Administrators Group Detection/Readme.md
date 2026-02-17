@@ -67,7 +67,7 @@ net localgroup administrators soc /add
 ```
 
 The second command generated Event ID 4732 in the Windows Security logs.
-
+![Attack Simulation](Screenshots/01_attack_simulation.png)
 The event was successfully ingested into Splunk and detected by the alert.
 
 ## Validation
@@ -78,6 +78,10 @@ The event was successfully ingested into Splunk and detected by the alert.
   - Group name: Administrators
 - Raw Security logs were reviewed to verify event accuracy.
 
+### Alert & Detection Output
+
+02_alert_triggered.png    ![Alert Triggered](Screenshots/02_alert_triggered.png)
+03_detection_result.png   ![Detection Result](Screenshots/03_detection_result.png)
 Evidence is available in the `Screenshots/` directory.
 
 ## False Positive Considerations
