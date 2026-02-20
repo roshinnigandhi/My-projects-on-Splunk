@@ -69,6 +69,8 @@ Command used:
 ```bash
 ssh test1@127.0.0.1
 ```
+![Attack Simulation](Screenshots/01_attack_simulation.png)
+
 
 Steps performed:
 1. Entered incorrect passwords multiple times.
@@ -85,6 +87,11 @@ This generated both failed and accepted password events in authentication logs, 
   - Number of failed attempts
   - Successful login event
 - Raw authentication logs were reviewed to validate accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
