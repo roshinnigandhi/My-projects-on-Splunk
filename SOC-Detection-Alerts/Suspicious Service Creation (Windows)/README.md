@@ -35,11 +35,17 @@ Service created using:
 sc.exe create EvilService binPath= "cmd.exe /c powershell.exe"
 
 This action generated Event ID 7045 in the Windows System logs, which was successfully ingested and detected by Splunk.
+![Attack Simulation](Screenshots/01_attack_simulation.png)
 
 ## Validation
 - The alert triggered immediately upon service creation.
 - SPL results confirmed the service name and executable path.
 - Raw event logs were reviewed to validate legitimacy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Relevant evidence is available in the `screenshots/` directory.
 
