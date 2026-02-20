@@ -65,6 +65,7 @@ Command used:
 ```bash
 sudo adduser test4
 ```
+![Attack Simulation](Screenshots/01_attack_simulation.png)
 
 This generated log entries containing `adduser`, which were ingested into Splunk and successfully detected by the alert.
 
@@ -75,6 +76,11 @@ This generated log entries containing `adduser`, which were ingested into Splunk
   - Newly created username
   - Associated log message
 - Raw system logs were reviewed to verify accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Attack Simulation](Screenshots/01_attack_simulation.png)
 
 Evidence is available in the `Screenshots/` directory.
 
