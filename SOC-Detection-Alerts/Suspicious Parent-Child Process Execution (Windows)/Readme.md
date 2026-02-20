@@ -85,6 +85,11 @@ When the macro was executed:
 - The event was ingested into Splunk
 - The alert successfully triggered
 
+![Attack Simulation](Screenshots/01_attack_simulation-1.png)
+![Attack Simulation](Screenshots/01_attack_simulation-2.png)
+![Attack Simulation](Screenshots/01_attack_simulation-3.png)
+
+
 ## Validation
 - The alert triggered immediately after macro execution.
 - SPL results confirmed:
@@ -92,6 +97,11 @@ When the macro was executed:
   - Child process: powershell.exe
   - Associated command line
 - Raw Sysmon logs were reviewed to verify process relationship accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
