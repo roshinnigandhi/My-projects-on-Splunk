@@ -66,6 +66,9 @@ powershell.exe -EncodedCommand ZQBjAGgAbwAgACIASABlAGwAbABvACIA
 
 This command executes a Base64-encoded PowerShell payload.
 
+![Attack Simulation](Screenshots/01_attack_simulation.png)
+
+
 The execution generated Event ID 4688 in the Windows Security logs, which was successfully ingested and detected by Splunk.
 
 ## Validation
@@ -75,6 +78,11 @@ The execution generated Event ID 4688 in the Windows Security logs, which was su
   - Encoded command usage  
   - Executing user account  
 - Raw Security logs were reviewed to verify accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Relevant evidence is available in the `Screenshots/` directory.
 
