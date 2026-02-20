@@ -70,6 +70,8 @@ Commands used:
 sudo usermod -aG sudo test4
 groups test4
 ```
+![Attack Simulation](Screenshots/01_attack_simulation.png)
+
 
 This generated log entries related to `usermod` and `sudo`, which were successfully ingested and detected by Splunk.
 
@@ -80,6 +82,11 @@ This generated log entries related to `usermod` and `sudo`, which were successfu
   - Acting administrator
   - Target user added to `sudo`
 - Group membership was verified using the `groups` command.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
