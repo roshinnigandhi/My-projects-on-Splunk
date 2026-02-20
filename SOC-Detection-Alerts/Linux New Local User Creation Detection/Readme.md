@@ -80,7 +80,7 @@ This generated log entries containing `adduser`, which were ingested into Splunk
 ### Alert & Detection Output
 
 ![Alert Triggered](Screenshots/02_alert_triggered.png)
-![Attack Simulation](Screenshots/01_attack_simulation.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
