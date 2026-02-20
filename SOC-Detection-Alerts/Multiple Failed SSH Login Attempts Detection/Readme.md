@@ -63,6 +63,8 @@ Command used:
 ```bash
 ssh test1@127.0.0.1
 ```
+![Attack Simulation](Screenshots/01_attack_simulation.png)
+
 
 Multiple incorrect password attempts were entered consecutively, generating repeated `Failed password` log entries.
 
@@ -75,6 +77,11 @@ These events were ingested into Splunk and successfully detected by the alert wh
   - Target username
   - Total number of failed attempts
 - Raw authentication logs were reviewed to verify log accuracy.
+
+### Alert & Detection Output
+
+![Alert Triggered](Screenshots/02_alert_triggered.png)
+![Detection Result](Screenshots/03_detection_result.png)
 
 Evidence is available in the `Screenshots/` directory.
 
